@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Github User Clean Architecture</string>
+    <string name="empty_search">Tidak Ditemukan</string>
+    <string name="menu_1">Pengaturan</string>
+    <string name="menu_2">Favorite</string>
+    <string name="search_hint">Cari username</string>
+    <string name="title_favorite">Favorite</string>
+</resources>
