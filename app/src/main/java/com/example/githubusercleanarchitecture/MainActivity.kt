@@ -3,6 +3,7 @@ package com.example.githubusercleanarchitecture
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,9 +12,10 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.core.domain.model.User
 import com.example.core.ui.UserAdapter
 import com.example.githubusercleanarchitecture.databinding.ActivityMainBinding
-import com.example.githubusercleanarchitecture.presentation.favorite.FavoriteActivity
+import com.example.githubusercleanarchitecture.presentation.detail.DetailActivity
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,6 +40,16 @@ class MainActivity : AppCompatActivity() {
                     showLoading(false)
 
                     val adapter = UserAdapter()
+                    adapter.onItemClick = {item ->
+                        val userParcel = User(
+                            id = item.id,
+                            username = item.login,
+                            avatarUrl = item.avatarUrl
+                        )
+                        val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                        intent.putExtra(DetailActivity.EXTRA_DATA, userParcel)
+                        startActivity(intent)
+                    }
                     adapter.setData(user)
                     binding.rvUser.setHasFixedSize(true)
                     binding.rvUser.adapter = adapter
@@ -75,16 +87,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.menu2 ->{
-                Intent(this, FavoriteActivity::class.java).also {
-                    startActivity(it)
-                }
+            R.id.menu1 ->{
+                val uri = Uri.parse("userfavorite://favorite")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
-//            R.id.menu1 ->{
-//                Intent(this, SettingActivity::class.java).also {
-//                    startActivity(it)
-//                }
-//            }
         }
         return super.onOptionsItemSelected(item)
     }

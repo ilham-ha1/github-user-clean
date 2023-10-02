@@ -11,4 +11,8 @@ interface IUserRepository {
     fun getFavoriteUser(): Flow<List<User>>
 
     fun setFavorite(favoriteUser: FavoriteUser)
+
+    fun checkUser(id:Int):Int
+
+    fun removeFavorite(id:Int):Int
 }

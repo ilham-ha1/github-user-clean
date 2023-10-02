@@ -9,4 +9,6 @@ interface UserUseCase{
     fun getAllUser(username:String): Flow<List<ItemsItem>>
     fun getFavoriteUser(): Flow<List<User>>
     fun setFavoriteUser(favoriteUser: FavoriteUser)
+    fun checkUser(id:Int): Int
+    fun removeFavorite(id:Int):Int
 }

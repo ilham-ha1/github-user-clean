@@ -18,4 +18,14 @@ class UserInteractor(private val userRepository: IUserRepository): UserUseCase{
     override fun setFavoriteUser(favoriteUser: FavoriteUser) {
         return userRepository.setFavorite(favoriteUser)
     }
+
+    override fun checkUser(id: Int): Int {
+        return userRepository.checkUser(id)
+    }
+
+    override fun removeFavorite(id: Int): Int {
+        return userRepository.removeFavorite(id)
+    }
+
+
 }

@@ -39,18 +39,12 @@ class UserRepository(
         }
     }
 
-    private fun mapApiResponseToUserList(apiResponse: ApiResponse<List<ItemsItem>>): List<User> {
-        return when (apiResponse) {
-            is ApiResponse.Success -> {
-                apiResponse.data.map { item ->
-                    User(
-                        id = item.id,
-                        username = item.login,
-                        avatarUrl = item.avatarUrl
-                    )
-                }
-            }
-            else -> emptyList()
-        }
+    override fun checkUser(id: Int): Int {
+        return localDataSource.check(id)
     }
+
+    override fun removeFavorite(id: Int): Int {
+        return localDataSource.removeFavorite(id)
+    }
+
 }
