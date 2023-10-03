@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(user?.avatarUrl)
                 .into(binding.profileImage)
-            binding.tvUsername.text = user?.username
+            binding.tvIdUser.text = user?.id.toString()
         }
 
         var selected = false

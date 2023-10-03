@@ -40,6 +40,7 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.ListViewHolder>(){
                     .load(data.avatarUrl)
                     .into(imgItemPhoto)
                 tvItemName.text = data.username
+
             }
         }
 
