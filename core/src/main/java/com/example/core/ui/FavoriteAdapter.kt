@@ -6,10 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.core.R
-import com.example.core.data.source.remote.response.ItemsItem
 import com.example.core.databinding.ItemListUserBinding
 import com.example.core.domain.model.User
-import java.util.ArrayList
 
 class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.ListViewHolder>(){
     private var listData = ArrayList<User>()
@@ -40,7 +38,6 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.ListViewHolder>(){
                     .load(data.avatarUrl)
                     .into(imgItemPhoto)
                 tvItemName.text = data.username
-
             }
         }
 

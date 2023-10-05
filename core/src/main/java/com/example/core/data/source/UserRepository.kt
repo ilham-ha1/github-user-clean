@@ -1,9 +1,7 @@
 package com.example.core.data.source
 
 import com.example.core.data.source.local.LocalDataSource
-import com.example.core.data.source.local.entity.FavoriteUser
 import com.example.core.data.source.remote.RemoteDataSource
-import com.example.core.data.source.remote.network.ApiResponse
 import com.example.core.data.source.remote.response.ItemsItem
 import com.example.core.domain.model.User
 import com.example.core.domain.repository.IUserRepository
@@ -33,9 +31,9 @@ class UserRepository(
         }
     }
 
-    override fun setFavorite(favoriteUser: FavoriteUser) {
+    override fun setFavorite(id: Int, username: String, avatarUrl: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            localDataSource.addFavorite(favoriteUser)
+            localDataSource.addFavorite(id, username, avatarUrl)
         }
     }
 

@@ -1,12 +1,11 @@
 package com.example.githubusercleanarchitecture.presentation.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.githubusercleanarchitecture.MainActivity
-import com.example.githubusercleanarchitecture.R
 import com.example.githubusercleanarchitecture.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {

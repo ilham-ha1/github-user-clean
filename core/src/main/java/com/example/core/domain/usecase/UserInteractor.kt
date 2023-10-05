@@ -1,6 +1,5 @@
 package com.example.core.domain.usecase
 
-import com.example.core.data.source.local.entity.FavoriteUser
 import com.example.core.data.source.remote.response.ItemsItem
 import com.example.core.domain.model.User
 import com.example.core.domain.repository.IUserRepository
@@ -15,8 +14,8 @@ class UserInteractor(private val userRepository: IUserRepository): UserUseCase{
         return userRepository.getFavoriteUser()
     }
 
-    override fun setFavoriteUser(favoriteUser: FavoriteUser) {
-        return userRepository.setFavorite(favoriteUser)
+    override fun setFavoriteUser(id: Int, username: String, avatarUrl: String) {
+        return userRepository.setFavorite(id, username, avatarUrl)
     }
 
     override fun checkUser(id: Int): Int {

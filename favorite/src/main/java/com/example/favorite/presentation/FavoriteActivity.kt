@@ -1,17 +1,13 @@
 package com.example.favorite.presentation
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.core.data.source.remote.response.ItemsItem
-import com.example.core.domain.model.User
 import com.example.core.ui.FavoriteAdapter
-import com.example.core.ui.UserAdapter
-import com.example.favorite.R
 import com.example.favorite.databinding.ActivityFavoriteBinding
 import com.example.favorite.di.favoriteModule
 import com.example.githubusercleanarchitecture.presentation.detail.DetailActivity
@@ -43,13 +39,10 @@ class FavoriteActivity : AppCompatActivity() {
 
                     val adapter = FavoriteAdapter()
                     adapter.onItemClick = {item ->
-                        val userParcel = User(
-                            id = item.id,
-                            username = item.username,
-                            avatarUrl = item.avatarUrl
-                        )
                         val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
-                        intent.putExtra(DetailActivity.EXTRA_DATA, userParcel)
+                        intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, item.username)
+                        intent.putExtra(DetailActivity.EXTRA_ID,item.id)
+                        intent.putExtra(DetailActivity.EXTRA_IMG, item.avatarUrl)
                         startActivity(intent)
                     }
 

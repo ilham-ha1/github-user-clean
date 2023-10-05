@@ -6,8 +6,6 @@ plugins {
     id 'kotlin-kapt'
 }
 
-def properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
 apply from: '../shared_dependencies.gradle'
 android {
     namespace 'com.example.core'
@@ -19,7 +17,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        buildConfigField("String", "API_KEY", properties.getProperty("apiKey"))
     }
 
     buildTypes {
@@ -36,7 +33,6 @@ android {
         jvmTarget = '18'
     }
     buildFeatures {
-        buildConfig true
         viewBinding = true
     }
 }

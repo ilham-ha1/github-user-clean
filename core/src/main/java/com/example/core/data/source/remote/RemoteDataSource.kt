@@ -5,12 +5,10 @@ import com.example.core.data.source.remote.network.ApiResponse
 import com.example.core.data.source.remote.network.ApiService
 import com.example.core.data.source.remote.response.DetailUserResponse
 import com.example.core.data.source.remote.response.ItemsItem
-import com.example.core.data.source.remote.response.UserResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import java.lang.Exception
 
 class RemoteDataSource(private val apiService: ApiService) {
     fun getSearchUsers(username: String): Flow<List<ItemsItem>> {

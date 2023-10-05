@@ -1,13 +1,11 @@
 package com.example.githubusercleanarchitecture
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.core.data.source.remote.response.ItemsItem
-import com.example.core.domain.model.User
 import com.example.core.domain.usecase.UserUseCase
 
 class MainViewModel(private val userUseCase: UserUseCase): ViewModel(){

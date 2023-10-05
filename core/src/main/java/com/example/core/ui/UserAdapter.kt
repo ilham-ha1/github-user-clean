@@ -1,6 +1,5 @@
 package com.example.core.ui
 
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,6 @@ import com.bumptech.glide.Glide
 import com.example.core.R
 import com.example.core.data.source.remote.response.ItemsItem
 import com.example.core.databinding.ItemListUserBinding
-import com.example.core.domain.model.User
-import java.util.ArrayList
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.ListViewHolder>(){
     private var listData = ArrayList<ItemsItem>()

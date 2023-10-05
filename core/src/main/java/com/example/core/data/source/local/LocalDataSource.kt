@@ -7,7 +7,9 @@ import kotlinx.coroutines.flow.Flow
 class LocalDataSource(private val favoriteUserDao: FavoriteUserDao){
     fun getFavoriteUser(): Flow<List<FavoriteUser>> = favoriteUserDao.getFavoriteUser()
 
-    fun addFavorite(favoriteUser: FavoriteUser) = favoriteUserDao.addFavorite(favoriteUser)
+    fun addFavorite(id: Int, username:String, avatarUrl:String) = favoriteUserDao.addFavorite(
+        FavoriteUser(id,username, avatarUrl)
+    )
 
     fun removeFavorite(id: Int) = favoriteUserDao.removeFavorite(id)
 

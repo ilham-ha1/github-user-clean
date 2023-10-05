@@ -4,15 +4,14 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.core.domain.model.User
 import com.example.core.ui.UserAdapter
 import com.example.githubusercleanarchitecture.databinding.ActivityMainBinding
 import com.example.githubusercleanarchitecture.presentation.detail.DetailActivity
@@ -41,13 +40,10 @@ class MainActivity : AppCompatActivity() {
 
                     val adapter = UserAdapter()
                     adapter.onItemClick = {item ->
-                        val userParcel = User(
-                            id = item.id,
-                            username = item.login,
-                            avatarUrl = item.avatarUrl
-                        )
                         val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                        intent.putExtra(DetailActivity.EXTRA_DATA, userParcel)
+                        intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, item.login)
+                        intent.putExtra(DetailActivity.EXTRA_ID,item.id)
+                        intent.putExtra(DetailActivity.EXTRA_IMG, item.avatarUrl)
                         startActivity(intent)
                     }
                     adapter.setData(user)
