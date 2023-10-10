@@ -6,6 +6,9 @@ orbs:
 jobs:
   build:
     executor: android/android
+    environment:
+      JVM_OPTS: -Xmx3200m
+      JAVA_HOME: /usr/lib/jvm/java-18-openjdk-amd64
     steps:
       - checkout
       - restore_cache:
@@ -13,11 +16,6 @@ jobs:
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
-      - run:
-          name: Set Java 17
-          command: |
-            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
       - run:
           name: Download Gradle 8.0
           command: |
