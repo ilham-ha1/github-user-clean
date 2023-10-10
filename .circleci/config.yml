@@ -14,20 +14,22 @@ jobs:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
       - run:
-          name: Update Java Version
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y openjdk-17-jdk
-            export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-            java -version  # Verify the new Java version
-      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
+      - run:
+          name: Print BASEURL
+          command: echo ${BASE_URL}
       - save_cache:
           key: 'android-orb-v1-{{ epoch }}'
           paths:
             - ~/.android/build-cache
             - ~/.android/cache
+      - run:
+          name: Set Java 17
+          command: |
+            sudo update-java-alternatives -s java-1.17.0-openjdk-amd64
+            export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+            java -version
       - run:
           name: Run Build
           command: ./gradlew build
