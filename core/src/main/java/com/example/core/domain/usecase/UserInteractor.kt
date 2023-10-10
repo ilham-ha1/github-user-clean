@@ -6,7 +6,7 @@ import com.example.core.domain.repository.IUserRepository
 import kotlinx.coroutines.flow.Flow
 
 class UserInteractor(private val userRepository: IUserRepository): UserUseCase{
-    override fun getAllUser(username: String): Flow<List<ItemsItem>> {
+    override fun getAllUser(username: String): Flow<List<User>> {
         return userRepository.getAllUser(username)
     }
 

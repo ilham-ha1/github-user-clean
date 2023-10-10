@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                     val adapter = UserAdapter()
                     adapter.onItemClick = {item ->
                         val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                        intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, item.login)
+                        intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, item.username)
                         intent.putExtra(DetailActivity.EXTRA_ID,item.id)
                         intent.putExtra(DetailActivity.EXTRA_IMG, item.avatarUrl)
                         startActivity(intent)

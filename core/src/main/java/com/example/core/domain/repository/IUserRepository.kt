@@ -1,11 +1,10 @@
 package com.example.core.domain.repository
 
-import com.example.core.data.source.remote.response.ItemsItem
 import com.example.core.domain.model.User
 import kotlinx.coroutines.flow.Flow
 
 interface IUserRepository {
-    fun getAllUser(username:String): Flow<List<ItemsItem>>
+    fun getAllUser(username:String): Flow<List<User>>
 
     fun getFavoriteUser(): Flow<List<User>>
 

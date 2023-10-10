@@ -2,7 +2,6 @@ package com.example.core.data.source
 
 import com.example.core.data.source.local.LocalDataSource
 import com.example.core.data.source.remote.RemoteDataSource
-import com.example.core.data.source.remote.response.ItemsItem
 import com.example.core.domain.model.User
 import com.example.core.domain.repository.IUserRepository
 import kotlinx.coroutines.CoroutineScope
@@ -10,13 +9,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import com.example.core.utils.DataMapper
 
 class UserRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
 ): IUserRepository {
-    override fun getAllUser(username: String): Flow<List<ItemsItem>> {
-        return remoteDataSource.getSearchUsers(username)
+    override fun getAllUser(username: String): Flow<List<User>> {
+        val data = remoteDataSource.getSearchUsers(username)
+        val userList = data.map {
+            DataMapper.mapItemToUser(it)
+        }
+        return userList
     }
 
     override fun getFavoriteUser(): Flow<List<User>> {
