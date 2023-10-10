@@ -6,9 +6,6 @@ orbs:
 jobs:
   build:
     executor: android/android
-    environment:
-      JVM_OPTS: -Xmx3200m
-      JAVA_HOME: /usr/lib/jvm/java-18-openjdk-amd64
     steps:
       - checkout
       - restore_cache:
@@ -16,14 +13,6 @@ jobs:
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
-      - run:
-          name: Download Gradle 8.0
-          command: |
-            wget https://services.gradle.org/distributions/gradle-8.0-bin.zip -P /tmp
-            unzip -q -d /opt /tmp/gradle-8.0-bin.zip
-            export GRADLE_HOME=/opt/gradle-8.0
-            export PATH=$GRADLE_HOME/bin:$PATH
-            echo "Using Gradle $(gradle --version)"
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
