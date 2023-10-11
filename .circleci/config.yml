@@ -16,7 +16,7 @@ version: 2.1
 
 orbs:
 
-  android: circleci/android@1.0.3
+  android: circleci/android@2.3.0
 
 # Define a job to be invoked later in a workflow.
 
@@ -31,10 +31,9 @@ jobs:
     # These next lines define the Android machine image executor.
 
     # See: https://circleci.com/docs/executor-types/
-
     docker:
 
-      - image: cimg/android:2023.08
+      - image: cimg/android:2023.09.1
 
     # Add steps to the job
 
@@ -99,3 +98,17 @@ jobs:
           path: app/build/outputs/apk/debug/
 
           destination: artifact-file
+
+# Invoke jobs via workflows
+
+# See: https://circleci.com/docs/configuration-reference/#workflows
+
+workflows:
+
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+
+    # Inside the workflow, you define the jobs you want to run.
+
+    jobs:
+
+      - build
