@@ -34,7 +34,7 @@ jobs:
 
     docker:
 
-      - image: cimg/android:2023.08
+      - image: circleci/openjdk:18-jdk
 
     # Add steps to the job
 
