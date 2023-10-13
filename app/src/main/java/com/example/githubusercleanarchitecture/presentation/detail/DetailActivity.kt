@@ -1,10 +1,12 @@
 package com.example.githubusercleanarchitecture.presentation.detail
 
+import android.nfc.NfcAdapter.EXTRA_ID
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.githubusercleanarchitecture.R
 import com.example.githubusercleanarchitecture.databinding.ActivityDetailBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,11 +15,7 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
-    companion object {
-        const val EXTRA_DETAIL_USER = "extra_detail_user"
-        const val EXTRA_ID = "extra_id"
-        const val EXTRA_IMG = "extra_img"
-    }
+
     private lateinit var binding: ActivityDetailBinding
     private val detailViewModel: DetailViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Detail User"
+        supportActionBar?.title = R.string.detail_user.toString()
 
         val user = intent.getStringExtra(EXTRA_DETAIL_USER)
         val id = intent.getIntExtra(EXTRA_ID, 0)
@@ -88,5 +86,11 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBarDetail.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    companion object {
+        const val EXTRA_DETAIL_USER = "extra_detail_user"
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_IMG = "extra_img"
     }
 }

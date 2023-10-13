@@ -25,7 +25,7 @@ val databaseModule = module {
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            FavoriteUserRoomDatabase::class.java, "user_database"
+            FavoriteUserRoomDatabase::class.java, "user_database.db"
         ).fallbackToDestructiveMigration().openHelperFactory(factory).build()
     }
 }
@@ -63,4 +63,3 @@ val repositoryModule = module {
         UserRepository(get(), get())
     }
 }
-
