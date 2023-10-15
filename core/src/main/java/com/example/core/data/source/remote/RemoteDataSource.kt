@@ -20,7 +20,7 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(dataArray)
                 }
             } catch (e: Exception) {
-                Log.e("Remote DataSource getSearchUsers", e.toString())
+                Log.e("IlhamRemote DataSource getSearchUsers", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }

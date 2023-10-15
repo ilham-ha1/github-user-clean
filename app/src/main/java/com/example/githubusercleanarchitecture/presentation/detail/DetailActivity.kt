@@ -54,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
             selected = !selected
             if (selected) {
                 if (user != null && img != null) {
-                    img?.let { it1 ->
+                    img.let { it1 ->
                         detailViewModel.setFavorite(
                             id,
                             user,

@@ -31,11 +31,11 @@ val databaseModule = module {
 }
 
 val networkModule = module {
-    val hostname = "github.com"
+    val hostname = "api.github.com"
     val certificatePinner = CertificatePinner.Builder()
-        .add(hostname, "sha256/jSd+RbSAB3215SSioJKeyfdEFELVT/xz+Fwod2ypqtE=")
+        .add(hostname, "sha256/jFaeVpA8UQuidlJkkpIdq3MPwD0m8XbuCRbJlezysBE=")
         .add(hostname, "sha256/Wec45nQiFwKvHtuHxSAMGkt19k+uPSw9JlEkxhvYPHk=")
-        .add(hostname, "sha256/YH8+l6PDvIo1Q5o6varvw2edPgfyJFY5fHuSlsVdvdc=")
+        .add(hostname, "sha256/Jg78dOE+fydIGk19swWwiypUSR6HWZybfnJG/8G7pyM=")
         .build()
 
     single {
