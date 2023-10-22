@@ -38,15 +38,14 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.getUser().observe(this@MainActivity) { user ->
                     showLoading(false)
 
-                    val adapter = UserAdapter()
-                    adapter.onItemClick = {item ->
+                    val adapter = UserAdapter(user, onItemClick ={item ->
                         val intent = Intent(this@MainActivity, DetailActivity::class.java)
                         intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, item.username)
                         intent.putExtra(DetailActivity.EXTRA_ID,item.id)
                         intent.putExtra(DetailActivity.EXTRA_IMG, item.avatarUrl)
                         startActivity(intent)
-                    }
-                    adapter.setData(user)
+                    })
+
                     binding.rvUser.setHasFixedSize(true)
                     binding.rvUser.adapter = adapter
                 }

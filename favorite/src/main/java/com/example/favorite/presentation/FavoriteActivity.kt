@@ -37,16 +37,14 @@ class FavoriteActivity : AppCompatActivity() {
                 favoriteViewModel.getFavorite().observe(this@FavoriteActivity) { user ->
                     showLoading(false)
 
-                    val adapter = FavoriteAdapter()
-                    adapter.onItemClick = {item ->
+                    val adapter = FavoriteAdapter(user, onItemClick =  {item ->
                         val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
                         intent.putExtra(DetailActivity.EXTRA_DETAIL_USER, item.username)
                         intent.putExtra(DetailActivity.EXTRA_ID,item.id)
                         intent.putExtra(DetailActivity.EXTRA_IMG, item.avatarUrl)
                         startActivity(intent)
-                    }
+                    })
 
-                    adapter.setData(user)
                     binding.rvUser.setHasFixedSize(true)
                     binding.rvUser.adapter = adapter
                 }

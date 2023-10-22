@@ -9,16 +9,7 @@ import com.example.core.R
 import com.example.core.databinding.ItemListUserBinding
 import com.example.core.domain.model.User
 
-class UserAdapter: RecyclerView.Adapter<UserAdapter.ListViewHolder>(){
-    private var listData = ArrayList<User>()
-    var onItemClick: ((User) -> Unit)? = null
-
-    fun setData(newListData: List<User>?) {
-        if (newListData == null) return
-        listData.clear()
-        listData.addAll(newListData)
-        notifyDataSetChanged()
-    }
+class UserAdapter(private val listData : List<User>, private val onItemClick: ((User) -> Unit)): RecyclerView.Adapter<UserAdapter.ListViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_user, parent, false))
