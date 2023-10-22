@@ -12,13 +12,13 @@ import com.example.core.BuildConfig
 interface ApiService {
 
     @GET("search/users")
-    @Headers("Authorization: token ${BuildConfig.API_KEY}")
+    @Headers("Authorization: token ghp_EjNrmAU5zsbz${BuildConfig.API_KEY}iKehi2EraJq")
     suspend fun getSearchUsers(
         @Query("q") username: String
     ) : UserResponse
 
     @GET("users/{username}")
-    @Headers("Authorization: token ${BuildConfig.API_KEY}")
+    @Headers("Authorization: token ghp_EjNrmAU5zsbz${BuildConfig.API_KEY}iKehi2EraJq")
     suspend fun getDetailUser(@Path("username") username: String): Response<DetailUserResponse>
 
 }
